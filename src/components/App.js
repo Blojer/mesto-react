@@ -11,6 +11,7 @@ function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [userName, setUserName] = React.useState('');
+  const [isDeleteCard, setIsDeleteCard] = React.useState(false);
   const [userDescription, setUserDescription] = React.useState('');
   const [userAvatar, setUserAvatar] = React.useState('');
   const [cards, setCards] = React.useState([]);
@@ -28,10 +29,15 @@ function App() {
     setIsAddPlacePopupOpen(true);
   };
 
+  const handleDeleteCard = () => {
+    setIsDeleteCard(true);
+  };
+
   const closeAllPopups = () => {
     setIsEditAvatarPopupOpen(false);
     setIsEditProfilePopupOpen(false);
     setIsAddPlacePopupOpen(false);
+    setIsDeleteCard(false);
     setSelectedCard('');
   };
 
@@ -65,6 +71,7 @@ function App() {
             onAddPlace={handleAddPlaceClick}
             onEditAvatar={handleEditAvatarClick}
             onEditProfile={handleEditProfileClick}
+            onDeleteCard={handleDeleteCard}
             userName={userName}
             userDescription={userDescription}
             userAvatar={userAvatar}
@@ -145,7 +152,13 @@ function App() {
             />
             <span className="popup__error" id="link-avatar-error"></span>
           </PopupWithForm>
-          <PopupWithForm title={'Вы уверены ?'} name={'delete'} buttonText={'Да'}></PopupWithForm>
+          <PopupWithForm
+            title={'Вы уверены ?'}
+            name={'delete'}
+            buttonText={'Да'}
+            isOpen={isDeleteCard}
+            onClose={closeAllPopups}
+          ></PopupWithForm>
           <ImagePopup card={selectedCard} onClose={closeAllPopups} />
         </div>
       </div>

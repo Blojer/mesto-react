@@ -8,7 +8,8 @@ function Main({
   userDescription,
   userAvatar,
   cards,
-  onCardClick
+  onCardClick,
+  onDeleteCard
 }) {
   return (
     <main>
@@ -39,7 +40,7 @@ function Main({
       <section className="places">
         <ul className="places__list">
           {cards.map((card, i) => (
-            <Card card={card} key={i} onCardClick={onCardClick} />
+            <Card card={card} key={i} onCardClick={onCardClick} onDeleteCard={onDeleteCard} />
           ))}
         </ul>
       </section>

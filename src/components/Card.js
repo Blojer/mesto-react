@@ -1,4 +1,4 @@
-function Card({ card, i, onCardClick }) {
+function Card({ card, i, onCardClick, onDeleteCard }) {
   function handleClick() {
     onCardClick(card);
   }
@@ -14,7 +14,7 @@ function Card({ card, i, onCardClick }) {
             <h3 className="place__likes-count">{card.likes.length}</h3>
           </div>
         </div>
-        <button className="place__delete"></button>
+        <button className="place__delete" onClick={onDeleteCard}></button>
       </li>
     </>
   );
