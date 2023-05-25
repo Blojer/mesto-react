@@ -1,4 +1,4 @@
-function Card({ card, onCardClick, onDeleteCard }) {
+function Card({ card, i, onCardClick }) {
   function handleClick() {
     onCardClick(card);
   }

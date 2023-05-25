@@ -39,13 +39,8 @@ function Main({
       </section>
       <section className="places">
         <ul className="places__list">
-          {cards.map(card => (
-            <Card
-              card={card}
-              onCardClick={onCardClick}
-              onDeleteCard={onDeleteCard}
-              key={card._id}
-            />
+          {cards.map((card, i) => (
+            <Card card={card} key={i} onCardClick={onCardClick} />
           ))}
         </ul>
       </section>
