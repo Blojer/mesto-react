@@ -44,6 +44,14 @@ class Api {
     return this._request('/users/me', { headers: this._headers });
   }
 
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return this.likeCard(cardId);
+    } else {
+      return this.dislikeCard(cardId);
+    }
+  }
+
   likeCard(cardId) {
     return this._request(`/cards/${cardId}/likes`, {
       method: 'PUT',

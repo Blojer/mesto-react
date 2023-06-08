@@ -1,27 +1,29 @@
+import React from 'react';
 import Card from './Card';
+import { CurrentUserContext } from '../contexts/CurrentUserContext';
 
 function Main({
   onEditProfile,
   onAddPlace,
   onEditAvatar,
-  userName,
-  userDescription,
-  userAvatar,
   cards,
   onCardClick,
-  onDeleteCard
+  onDeleteCard,
+  onCardLike,
+  onCardDelete
 }) {
+  const currentUser = React.useContext(CurrentUserContext);
   return (
     <main>
       <section className="profile">
         <div className="profile__edit">
-          <img src={userAvatar} alt="Фото профиля" className="profile__avatar" />
+          <img src={currentUser.avatar} alt="Фото профиля" className="profile__avatar" />
           <button className="profile__avatar-button" type="button" onClick={onEditAvatar}></button>
         </div>
         <div className="profile__info">
           <div className="profile__data">
-            <h1 className="profile__full-name">{userName}</h1>
-            <p className="profile__hobby">{userDescription}</p>
+            <h1 className="profile__full-name">{currentUser.name}</h1>
+            <p className="profile__hobby">{currentUser.about}</p>
           </div>
           <button
             className="profile__edit-button"
@@ -45,6 +47,8 @@ function Main({
               key={card._id}
               onCardClick={onCardClick}
               onDeleteCard={onDeleteCard}
+              onCardLike={onCardLike}
+              onCardDelete={onCardDelete}
             />
           ))}
         </ul>
